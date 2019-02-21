@@ -56,4 +56,53 @@ public class Medicament extends BaseEntity {
         this.presentacion = presentacion;
     }
 
+    
+    @Column(name = "descripcion")
+    @NotEmpty
+    private String descripcion;
+ 
+    @Column(name = "inventario")
+    //@NotEmpty
+    private Integer inventario;
+  
+    @Column(name = "precio")
+    //@NotEmpty
+    private float precio=0;
+    
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+
+    public Integer getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(Integer inventario) {
+        this.inventario = inventario;
+    }
+    
+    
+    @Column(name = "imagen")
+    private String imagen;  
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }  
+    
 }

@@ -27,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -40,11 +41,13 @@ class OwnerController {
 
     private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
     private final OwnerRepository owners;
+    private final Owner_report_repo or;
     //private final PetRepository pets;
 
 
-    public OwnerController(OwnerRepository clinicService) {
+    public OwnerController(OwnerRepository clinicService,Owner_report_repo or ) {
         this.owners = clinicService;
+        this.or = or;
         //this.pets =pet;
     }
 
@@ -62,10 +65,16 @@ class OwnerController {
 
     @PostMapping("/owners/new")
     public String processCreationForm(@Valid Owner owner, BindingResult result) {
+        Date fecha = new Date();	
+	Owner_report ors = new Owner_report();
         if (result.hasErrors()) {
             return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
         } else {
+            ors.setOwner_name(owner.getFirstName());
+            ors.setAccion("Creado");
+            ors.setFecha(fecha.toString());
             this.owners.save(owner);
+            this.or.save(ors);
             return "redirect:/owners/" + owner.getId();
         }
     }
@@ -100,6 +109,15 @@ class OwnerController {
             return "owners/ownersList";
         }
     }
+    @GetMapping("/owners/report")
+	public String getUsers(Map<String, Object> model) {
+		//System.out.println("Im in");
+                Collection<Owner_report> results = this.or.findAll();
+		model.put("selections", results);
+		//System.out.println("R: " + results.get(0).getCorreo());
+                System.out.println("Voy a reedirigir");
+		return "owners/OwnerReport";	
+	}
 
     @GetMapping("/owners/{ownerId}/edit")
     public String initUpdateOwnerForm(@PathVariable("ownerId") int ownerId, Model model) {
@@ -110,11 +128,18 @@ class OwnerController {
 
     @PostMapping("/owners/{ownerId}/edit")
     public String processUpdateOwnerForm(@Valid Owner owner, BindingResult result, @PathVariable("ownerId") int ownerId) {
+          Date fecha = new Date();	
+          Owner_report ors = new Owner_report();
         if (result.hasErrors()) {
             return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
         } else {
+            
             owner.setId(ownerId);
+            ors.setOwner_name(owner.getFirstName());
+            ors.setAccion("Editado");
+            ors.setFecha(fecha.toString());
             this.owners.save(owner);
+            this.or.save(ors);
             return "redirect:/owners/{ownerId}";
         }
     }

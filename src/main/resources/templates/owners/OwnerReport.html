@@ -1,0 +1,29 @@
+<html  xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
+   <body>
+
+    <h2>Owners</h2>
+
+    <table id="vets" class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width: 150px;">Nombre</th>
+            <th style="width: 200px;">Accion</th>
+            <th >Fecha</th>
+
+        
+        </tr>
+        </thead>
+        <tbody>
+          <tr th:each="owner : ${selections}">
+             
+              <td th:text="${owner.owner_name}"/>
+              <td th:text="${owner.accion}"/>
+              <td th:text="${owner.fecha}"/>
+          </tr>
+        </tbody>
+    </table>
+    
+    <div >
+     
+    </div>
+</html>

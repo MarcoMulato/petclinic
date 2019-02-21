@@ -21,13 +21,18 @@
     </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default" th:text="#{findMedicament}">Find
-          Owner</button>
+        <button type="submit" class="btn btn-default" th:text="#{findMedicament}">Buscar</button>          
       </div>
     </div>
 
   </form>
-
+    <form th:object="${medicament}" th:action="@{/medicaments2}" method="get" class="col-sm-offset-2 col-sm-10"> 
+        <button type="submit" class="btn btn-default" th:text="#{list}">Listar</button>
+    </form>   
+  
+    <form th:object="${medicament}" th:action="@{/medicament/report}" method="get" class="col-sm-offset-2 col-sm-10"> 
+        <button type="submit" class="btn btn-default" th:text="#{medicamentReport}">Report</button>
+    </form>
   <br />
   <a class="btn btn-default" th:href="@{/medicament/new}" th:text="#{addMedic}">Add Owner</a>
 

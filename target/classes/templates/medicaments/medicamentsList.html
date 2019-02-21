@@ -9,9 +9,13 @@
     <table id="vets" class="table table-striped">
         <thead>
         <tr>
+            <th th:text="#{image}">imagen</th>
             <th style="width: 150px;" th:text="#{name}">Name</th>
             <th style="width: 200px;" th:text="#{ingredients}">ingredients</th>
             <th th:text="#{presentation}">City</th>
+            <th th:text="#{description}">descripcion</th>
+            <th th:text="#{price}">precio</th>
+            <th th:text="#{stock}">inventario</th>            
             <th th:text="#{accion}">Acciones</th>
         </tr>
         </thead>
@@ -19,15 +23,18 @@
           <tr th:each="medicament : ${selections}">
               
 <!--                  <a th:href="@{/medicament/__${medicament.id}__}" th:text="${medicament.nombre}"/></a>-->
-                  <td th:text="${medicament.nombre}"/>
-              
+             <!-- <td th:text="imagen.png"/> -->
+              <td><img style="height: 150px" th:src="@{'/resources/images/medicinas/' + ${medicament.imagen}}"></td>
+              <td th:text="${medicament.nombre}"/>              
               <td th:text="${medicament.ingredientes}"/>
-              <td th:text="${medicament.presentacion}"/>
-              <td>
+              <td th:text="${medicament.presentacion}"/> 
+              <td th:text="${medicament.descripcion}"/>
+              <td th:text="'$ '+ ${medicament.precio}"/>
+              <td th:text="${medicament.inventario}"/>
+                <td>
                   <a th:href="@{/medicament/edit/__${medicament.id}__}">Editar</a>
-                  <a th:href="@{/medicament/delete/__${medicament.id}__}">Eliminar</a>
-                  
-              </td>
+                  <a th:href="@{/medicament/delete/__${medicament.id}__}">Eliminar</a> 
+              </td> 
           </tr>
         </tbody>
     </table>

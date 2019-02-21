@@ -4,14 +4,26 @@
 <body>
 
   <h2 th:text="#{medicament}">Medicament</h2>
-  <form th:object="${medicament}" class="form-horizontal" id="add-medicament-form" method="post">
+  <form th:object="${medicament}" class="form-horizontal" id="add-medicament-form" method="post" enctype="multipart/form-data"  >
     <div class="form-group has-feedback">
-      <input
-        th:replace="~{fragments/inputField :: input (#{name}, 'nombre', 'text')}" />
-      <input
-        th:replace="~{fragments/inputField :: input (#{ingredients}, 'ingredientes', 'text')}" />
-      <input
-        th:replace="~{fragments/inputField :: input (#{presentation}, 'presentacion', 'text')}" />
+    <input
+      th:replace="~{fragments/inputField :: input (#{name}, 'nombre', 'text')}" />
+    <input
+      th:replace="~{fragments/inputField :: input (#{ingredients}, 'ingredientes', 'text')}" />
+    <input
+      th:replace="~{fragments/inputField :: input (#{presentation}, 'presentacion', 'text')}" />
+    <input
+      th:replace="~{fragments/inputField :: input (#{description}, 'descripcion', 'text')}" />
+    <input
+      th:replace="~{fragments/inputField :: input (#{stock}, 'inventario', 'text')}" />
+    <input
+      th:replace="~{fragments/inputField :: input (#{price}, 'precio', 'text')}" />
+    
+    <div class="col-sm-offset-1 col-sm-10">
+        <h3>Imagen del producto:<h3>
+        <input type="file" name="files" />           
+    </div>
+    
     </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">

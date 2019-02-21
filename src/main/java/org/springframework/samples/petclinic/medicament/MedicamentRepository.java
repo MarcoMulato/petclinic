@@ -29,7 +29,7 @@ public interface MedicamentRepository extends Repository<Medicament, Integer>{
     @Query("SELECT DISTINCT medicament FROM Medicament medicament WHERE medicament.nombre LIKE :nombre%")
     @Transactional(readOnly = true)
     Collection<Medicament> findByName(@Param("nombre") String nombre);
-    
+
     /**
      * Retrieve an {@link Medicamenr} from the data store by id.
      * @param id the id to search for

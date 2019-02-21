@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: layout (~{::body},'users')}">
+    <body>
+        <h2 >Users</h2>
+        <table id="users" class="table table-striped">
+            <thead>
+                <tr>
+                  <th >Nombre</th>
+                  <th >Correo</th>
+                  <th >Activo</th>
+                  <th >Codigo Postal</th>
+                  <th>Municipio</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="user : ${users.userList}">
+                    <td th:text="${user.nombre}"></td>
+                    <td th:text="${user.correo}"></td>
+                    <td>
+                        <span th:if="${user.activo == '0'}">Inactivo</span>
+                        <span th:if="${user.activo == '1'}">Activo</span>
+                    </td>
+                    <td th:text="${user.cp}"></td>
+                    <td th:text="${user.municipio}"></td>
+                    <th>
+                       <a th:href="@{/users/edit/__${user.id}__}"  >Editar</a>
+                       <a th:href="@{/users/delete/__${user.id}__}"  >Eliminar</a>
+                       
+                    </th>
+                </tr>
+              </tbody>   
+        </table>
+        <div style="text-align: center">
+      
+            <br>
+            <br>
+            <a class="btn btn-default" th:href="@{/users/new}" >Agregar Usuarios</a>
+            <a class="btn btn-default" th:href="@{/users/report}" >Reporte de Usuarios</a>
+        </div>
+    </body>
+</html>

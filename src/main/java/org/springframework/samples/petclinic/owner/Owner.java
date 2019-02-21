@@ -52,6 +52,32 @@ public class Owner extends Person {
     @Column(name = "city")
     @NotEmpty
     private String city;
+    
+    @Column(name = "latitud")
+    @NotEmpty
+    private String latitud;
+    
+    @Column(name = "longintud")
+    @NotEmpty
+    private String longintud;
+
+    public void setLatitud(String latitud) {
+        this.latitud = latitud;
+    }
+
+    public void setLongintud(String longintud) {
+        this.longintud = longintud;
+    }
+
+    public String getLatitud() {
+        return latitud;
+    }
+
+    public String getLongintud() {
+        return longintud;
+    }
+    
+    
 
     @Column(name = "telephone")
     @NotEmpty
@@ -146,7 +172,9 @@ public class Owner extends Person {
 
                 .append("id", this.getId()).append("new", this.isNew())
                 .append("lastName", this.getLastName())
+                
                 .append("firstName", this.getFirstName()).append("address", this.address)
                 .append("city", this.city).append("telephone", this.telephone).toString();
+               
     }
 }
