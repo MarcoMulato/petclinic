@@ -43,7 +43,7 @@ public class LoginController {
         }
         model.addAttribute("errorMessge", errorMessge);
         
-        return "/login";
+        return "login";
     }
   
     @RequestMapping(value="/logout", method = RequestMethod.GET)

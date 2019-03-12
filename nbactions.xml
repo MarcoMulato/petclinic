@@ -13,5 +13,5 @@
                 <exec.args>-classpath %classpath org.springframework.samples.petclinic.PetClinicApplication</exec.args>
                 <exec.executable>java</exec.executable>
             </properties>
-        </action>
+        </action>        
     </actions>

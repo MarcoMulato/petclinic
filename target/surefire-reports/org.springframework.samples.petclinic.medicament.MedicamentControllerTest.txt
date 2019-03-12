@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: org.springframework.samples.petclinic.medicament.MedicamentControllerTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.006 sec <<< FAILURE! - in org.springframework.samples.petclinic.medicament.MedicamentControllerTest
-initializationError(org.springframework.samples.petclinic.medicament.MedicamentControllerTest)  Time elapsed: 0.005 sec  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.061 sec <<< FAILURE! - in org.springframework.samples.petclinic.medicament.MedicamentControllerTest
+initializationError(org.springframework.samples.petclinic.medicament.MedicamentControllerTest)  Time elapsed: 0.036 sec  <<< ERROR!
 java.lang.NoClassDefFoundError: Could not initialize class org.springframework.test.context.junit4.SpringRunner
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
